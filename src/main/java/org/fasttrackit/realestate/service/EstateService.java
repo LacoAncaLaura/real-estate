@@ -1,6 +1,6 @@
 package org.fasttrackit.realestate.service;
 
-import lombok.AllArgsConstructor;
+
 import lombok.Builder;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
@@ -54,9 +54,9 @@ public class EstateService {
 
     public Page<Estate> getEstates(GetEstateRequest request, Pageable pageable) {
         if (request.getPartialCity() != null && request.getMinimumQuantity() != null) {
-            estateRepository.findByNameContainingAndQuantityGreaterThanEqual(request.getPartialCity(), request.getMinimumQuantity(), pageable);
+            estateRepository.findByTypeContainingAndQuantityGreaterThanEqual(request.getPartialCity(), request.getMinimumQuantity(), pageable);
         } else if (request.getPartialCity() != null) {
-            return estateRepository.findByNameContaining(request.getPartialCity(), pageable);
+            return estateRepository.findByTypeContaining(request.getPartialCity(), pageable);
         } else {
             return estateRepository.findAll(pageable);
         }return estateRepository.findAll(pageable);

@@ -9,7 +9,6 @@ import org.fasttrackit.realestate.exception.ResourceNotFoundException;
 import org.fasttrackit.realestate.service.EstateService;
 import org.fasttrackit.realestate.transfer.SaveEstateRequest;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -41,6 +40,8 @@ class RealEstateApplicationTests {
         request.setSize(70.5);
         request.setValue(90000);
         request.setQuantity(1);
+        request.setTax(3.3);
+
 
         Estate estate = estateService.createEstate(request);
 
@@ -54,6 +55,7 @@ class RealEstateApplicationTests {
         assertThat(estate.getSize(), is(request.getSize()));
         assertThat(estate.getValue(), is(request.getValue()));
         assertThat(estate.getQuantity(), is(request.getQuantity()));
+        assertThat(estate.getTax(),is(request.getTax()));
      return estate;
     }
 
@@ -87,6 +89,7 @@ class RealEstateApplicationTests {
         request.setSize(70.5);
         request.setValue(90000);
         request.setQuantity(1);
+        request.setTax(3.3);
         Estate updateEstate = estateService.createEstate(request);
         assertThat(updateEstate, notNullValue());
         assertThat(updateEstate.getId(), greaterThan(0l));
@@ -98,6 +101,7 @@ class RealEstateApplicationTests {
         assertThat(updateEstate.getSize(), is(request.getSize()));
         assertThat(updateEstate.getValue(), is(request.getValue()));
         assertThat(updateEstate.getQuantity(), is(request.getQuantity()));
+        assertThat(updateEstate.getTax(),is(request.getTax()));
     }
     @Test
     void deleteEstate_whenExistingEstate_theEstateDoseNotExistAnymore(){
