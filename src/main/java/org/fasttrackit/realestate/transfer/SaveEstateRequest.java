@@ -3,6 +3,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.Range;
+
 import javax.validation.constraints.NotNull;
 
 @Builder
@@ -25,6 +27,7 @@ public class SaveEstateRequest {
     private double size;
     @NotNull
     private int value;
+    @Range(min=0)
     @NotNull
     private int quantity;
     @NotNull

@@ -53,10 +53,10 @@ public class EstateService {
     }
 
     public Page<Estate> getEstates(GetEstateRequest request, Pageable pageable) {
-        if (request.getPartialCity() != null && request.getMinimumQuantity() != null) {
-            estateRepository.findByTypeContainingAndQuantityGreaterThanEqual(request.getPartialCity(), request.getMinimumQuantity(), pageable);
+        if (request.getPartialCity()!= null && request.getMinimumQuantity() != null) {
+            estateRepository.findByCityContainingAndQuantityGreaterThanEqual(request.getPartialCity(), request.getMinimumQuantity(), pageable);
         } else if (request.getPartialCity() != null) {
-            return estateRepository.findByTypeContaining(request.getPartialCity(), pageable);
+            return estateRepository.findByCityContaining(request.getPartialCity(), pageable);
         } else {
             return estateRepository.findAll(pageable);
         }return estateRepository.findAll(pageable);

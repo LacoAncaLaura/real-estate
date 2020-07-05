@@ -17,13 +17,15 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
 import javax.validation.ConstraintViolationException;
 import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.mockito.Mockito.mock;
 @ExtendWith(MockitoExtension.class)
 @SpringBootTest
 class RealEstateApplicationTests {
-//    private static final String MOCK_OUTPUT = "Mocked show ";
+
     @Mock
     @InjectMocks
-    private EstateService estateService;
+//    private EstateService estateService;
+    EstateService estateServiceMock = mock(EstateService.class);
 
     @Test
     void createEstate_whenValidRequest_thenReturnCreatedEstate() {
@@ -43,7 +45,7 @@ class RealEstateApplicationTests {
         request.setTax(3.3);
 
 
-        Estate estate = estateService.createEstate(request);
+        Estate estate = estateServiceMock.createEstate(request);
 
         assertThat(estate, notNullValue());
         assertThat(estate.getId(), greaterThan(0l));
@@ -62,21 +64,21 @@ class RealEstateApplicationTests {
     @Test
     void getEstate_whenExistingEstate_thenReturnEstate() {
         Estate estate = createEstate();
-        Estate response = estateService.getEstate(estate.getId());
+        Estate response = estateServiceMock.getEstate(estate.getId());
     }
 
     @Test
     void createEstate_whenMissingMandatoryDetails_thenThrowException() {
         SaveEstateRequest request = new SaveEstateRequest();
         try {
-            Estate estate = estateService.createEstate(request);
+            Estate estate = estateServiceMock.createEstate(request);
         } catch (Exception e) {
             assertThat("Missing mandatory details", e instanceof ConstraintViolationException);
         }
     }
     @Test
     void getEstate_whenNoExistingEstate_thenThrowNotFoundException(){
-        Assertions.assertThrows(ResourceNotFoundException.class, () -> estateService.getEstate(0));
+        Assertions.assertThrows(ResourceNotFoundException.class, () -> estateServiceMock.getEstate(0));
     }
     @Test
     void updateEstate_whenValidDetailsChange_thenUpdatingEstate(){
@@ -90,7 +92,7 @@ class RealEstateApplicationTests {
         request.setValue(90000);
         request.setQuantity(1);
         request.setTax(3.3);
-        Estate updateEstate = estateService.createEstate(request);
+        Estate updateEstate = estateServiceMock.createEstate(request);
         assertThat(updateEstate, notNullValue());
         assertThat(updateEstate.getId(), greaterThan(0l));
         assertThat(updateEstate.getType(), is(request.getType()));
@@ -106,7 +108,7 @@ class RealEstateApplicationTests {
     @Test
     void deleteEstate_whenExistingEstate_theEstateDoseNotExistAnymore(){
         Estate estate = createEstate();
-        estateService.deleteEstate(estate.getId());
-        Assertions.assertThrows(ResourceNotFoundException.class, () -> estateService.getEstate(0));
+        estateServiceMock.deleteEstate(estate.getId());
+        Assertions.assertThrows(ResourceNotFoundException.class, () -> estateServiceMock.getEstate(0));
     }
 }
