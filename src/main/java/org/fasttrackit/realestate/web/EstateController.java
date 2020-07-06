@@ -12,11 +12,11 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
+@Builder
+@Data
 @CrossOrigin
 @RestController
 @RequestMapping("/estates")
-@Builder
-@Data
 public class EstateController {
 
     private final EstateService estateService;
@@ -31,10 +31,11 @@ public class EstateController {
         Estate estate = estateService.createEstate(request);
         return new ResponseEntity<>(estate, HttpStatus.CREATED);
     }
+
     @PutMapping
-    public ResponseEntity<Estate>updateEstate(@PathVariable long id,@Valid @RequestBody SaveEstateRequest request){
-        Estate estate = estateService.updateEstate(id,request);
-        return new ResponseEntity<>(estate,HttpStatus.OK);
+    public ResponseEntity<Estate> updateEstate(@PathVariable long id, @Valid @RequestBody SaveEstateRequest request) {
+        Estate estate = estateService.updateEstate(id, request);
+        return new ResponseEntity<>(estate, HttpStatus.OK);
     }
 
 }
