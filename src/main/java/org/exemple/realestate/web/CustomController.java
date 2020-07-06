@@ -1,4 +1,4 @@
-package org.fasttrackit.realestate.web;
+package org.exemple.realestate.web;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;

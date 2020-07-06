@@ -1,4 +1,4 @@
-package org.fasttrackit.realestate;
+package org.exemple.realestate;
 
 
 import org.springframework.boot.SpringApplication;

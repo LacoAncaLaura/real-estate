@@ -1,14 +1,14 @@
-package org.fasttrackit.realestate.service;
+package org.exemple.realestate.service;
 
 
 import lombok.Builder;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import org.fasttrackit.realestate.domain.Estate;
-import org.fasttrackit.realestate.exception.ResourceNotFoundException;
-import org.fasttrackit.realestate.persistance.EstateRepository;
-import org.fasttrackit.realestate.transfer.GetEstateRequest;
-import org.fasttrackit.realestate.transfer.SaveEstateRequest;
+import org.exemple.realestate.exception.ResourceNotFoundException;
+import org.exemple.realestate.transfer.GetEstateRequest;
+import org.exemple.realestate.transfer.SaveEstateRequest;
+import org.exemple.realestate.domain.Estate;
+import org.exemple.realestate.persistance.EstateRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

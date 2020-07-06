@@ -1,6 +1,6 @@
-package org.fasttrackit.realestate.persistance;
+package org.exemple.realestate.persistance;
 
-import org.fasttrackit.realestate.domain.Estate;
+import org.exemple.realestate.domain.Estate;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

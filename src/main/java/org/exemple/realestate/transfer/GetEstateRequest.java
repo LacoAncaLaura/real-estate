@@ -1,4 +1,4 @@
-package org.fasttrackit.realestate.transfer;
+package org.exemple.realestate.transfer;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

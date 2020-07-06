@@ -1,10 +1,9 @@
-package org.fasttrackit.realestate;
+package org.exemple.realestate;
 
 
-import org.fasttrackit.realestate.domain.Estate;
-import org.fasttrackit.realestate.persistance.EstateRepository;
-import org.fasttrackit.realestate.service.EstateService;
-import org.fasttrackit.realestate.transfer.SaveEstateRequest;
+import org.exemple.realestate.persistance.EstateRepository;
+import org.exemple.realestate.service.EstateService;
+import org.exemple.realestate.domain.Estate;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -16,7 +15,6 @@ import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.Collections;
 import java.util.Optional;
 
 

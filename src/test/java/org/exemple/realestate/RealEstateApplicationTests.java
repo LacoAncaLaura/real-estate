@@ -1,13 +1,13 @@
-package org.fasttrackit.realestate;
+package org.exemple.realestate;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.greaterThan;
 
-import org.fasttrackit.realestate.domain.Estate;
-import org.fasttrackit.realestate.exception.ResourceNotFoundException;
-import org.fasttrackit.realestate.service.EstateService;
-import org.fasttrackit.realestate.transfer.SaveEstateRequest;
+import org.exemple.realestate.exception.ResourceNotFoundException;
+import org.exemple.realestate.service.EstateService;
+import org.exemple.realestate.transfer.SaveEstateRequest;
+import org.exemple.realestate.domain.Estate;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ class RealEstateApplicationTests {
 
 
 @Autowired
-    EstateService estateService;
+EstateService estateService;
     @Test
     void createEstate_whenValidRequest_thenReturnCreatedEstate() {
         createEstate();
@@ -43,7 +43,7 @@ class RealEstateApplicationTests {
         Estate estate = estateService.createEstate(request);
 
         assertThat(estate, notNullValue());
-        assertThat(estate.getId(), greaterThan(0l));
+        assertThat(estate.getId(), greaterThan(0L));
         assertThat(estate.getType(), is(request.getType()));
         assertThat(estate.getOwner(), is(request.getOwner()));
         assertThat(estate.getCity(), is(request.getCity()));
@@ -60,6 +60,18 @@ class RealEstateApplicationTests {
     void getEstate_whenExistingEstate_thenReturnEstate() {
         Estate estate = createEstate();
         Estate response = estateService.getEstate(estate.getId());
+
+        assertThat(estate, notNullValue());
+        assertThat(response.getId(), greaterThan(0l));
+        assertThat(response.getType(), is(estate.getType()));
+        assertThat(response.getOwner(), is(estate.getOwner()));
+        assertThat(response.getCity(), is(estate.getCity()));
+        assertThat(response.getStreet(), is(estate.getStreet()));
+        assertThat(response.getNumber(), is(estate.getNumber()));
+        assertThat(response.getSize(), is(estate.getSize()));
+        assertThat(response.getValue(), is(estate.getValue()));
+        assertThat(response.getQuantity(), is(estate.getQuantity()));
+        assertThat(response.getTax(),is(estate.getTax()));
     }
 
     @Test
