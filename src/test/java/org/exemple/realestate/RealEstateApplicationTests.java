@@ -6,8 +6,8 @@ import static org.hamcrest.Matchers.greaterThan;
 
 import org.exemple.realestate.exception.ResourceNotFoundException;
 import org.exemple.realestate.service.EstateService;
-import org.exemple.realestate.transfer.SaveEstateRequest;
-import org.exemple.realestate.domain.Estate;
+import org.exemple.realestate.web.dto.SaveEstateRequestDto;
+import org.exemple.realestate.persistance.entity.Estate;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,7 +28,7 @@ EstateService estateService;
     }
 
     private Estate createEstate() {
-        SaveEstateRequest request = new SaveEstateRequest();
+        SaveEstateRequestDto request = new SaveEstateRequestDto();
         request.setType("House");
         request.setOwner("John Preston");
         request.setCity("Cluj");
@@ -76,7 +76,7 @@ EstateService estateService;
 
     @Test
     void createEstate_whenMissingMandatoryDetails_thenThrowException() {
-        SaveEstateRequest request = new SaveEstateRequest();
+        SaveEstateRequestDto request = new SaveEstateRequestDto();
         try {
             Estate estate = estateService.createEstate(request);
         } catch (Exception e) {
@@ -89,7 +89,7 @@ EstateService estateService;
     }
     @Test
     void updateEstate_whenValidDetailsChange_thenUpdatingEstate(){
-        SaveEstateRequest request = new SaveEstateRequest();
+        SaveEstateRequestDto request = new SaveEstateRequestDto();
         request.setType("House");
         request.setOwner("John Preston");
         request.setCity("Cluj");

@@ -1,21 +1,34 @@
-package org.exemple.realestate.transfer;
+package org.exemple.realestate.persistance.entity;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.Range;
 
-import javax.validation.constraints.NotNull;
+;
+
 
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 
-public class SaveEstateRequest {
+@Entity
+public class Estate {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+
+
     @NotNull
     private String type;
     @NotNull
+    //    This should be a reference to a Owner Obj/Table
     private String owner;
     @NotNull
     private String city;
@@ -27,10 +40,8 @@ public class SaveEstateRequest {
     private double size;
     @NotNull
     private int value;
-    @Range(min=0)
     @NotNull
     private int quantity;
     @NotNull
     private double tax;
-
 }

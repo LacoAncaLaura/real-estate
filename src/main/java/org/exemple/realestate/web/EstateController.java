@@ -2,10 +2,13 @@ package org.exemple.realestate.web;
 
 import lombok.Builder;
 import lombok.Data;
-import org.exemple.realestate.transfer.SaveEstateRequest;
-import org.exemple.realestate.domain.Estate;
+import org.exemple.realestate.web.dto.GetEstateRequestDto;
+import org.exemple.realestate.web.dto.SaveEstateRequestDto;
+import org.exemple.realestate.persistance.entity.Estate;
 import org.exemple.realestate.service.EstateService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,13 +30,13 @@ public class EstateController {
     }
 
     @PostMapping
-    public ResponseEntity<Estate> createEstate(@Valid @RequestBody SaveEstateRequest request) {
+    public ResponseEntity<Estate> createEstate(@Valid @RequestBody SaveEstateRequestDto request) {
         Estate estate = estateService.createEstate(request);
         return new ResponseEntity<>(estate, HttpStatus.CREATED);
     }
 
     @PutMapping
-    public ResponseEntity<Estate> updateEstate(@PathVariable long id, @Valid @RequestBody SaveEstateRequest request) {
+    public ResponseEntity<Estate> updateEstate(@PathVariable long id, @Valid @RequestBody SaveEstateRequestDto request) {
         Estate estate = estateService.updateEstate(id, request);
         return new ResponseEntity<>(estate, HttpStatus.OK);
     }
@@ -44,12 +47,12 @@ public class EstateController {
 
         return new ResponseEntity<>(estate, HttpStatus.OK);
     }
-//    @GetMapping
-//    public ResponseEntity<Page<Estate>>getProducts(@Valid GetEstateRequest request,Pageable pageable){
-//
-//        Page<Estate> products =  estateService.getEstate(request,pageable);
-//        return new ResponseEntity<>(products,HttpStatus.OK);
-//    }
+    @GetMapping
+    public ResponseEntity<Page<Estate>>getProducts(@Valid GetEstateRequestDto request, Pageable pageable){
+
+        Page<Estate> products = estateService.getEstates(request,pageable);
+        return new ResponseEntity<>(products,HttpStatus.OK);
+    }
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteEstate(@PathVariable long id) {
 

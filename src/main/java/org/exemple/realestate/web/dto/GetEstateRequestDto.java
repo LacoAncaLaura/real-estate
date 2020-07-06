@@ -1,4 +1,4 @@
-package org.exemple.realestate.transfer;
+package org.exemple.realestate.web.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class GetEstateRequest {
+public class GetEstateRequestDto {
     private String partialCity;
     private Integer minimumQuantity;
 }
