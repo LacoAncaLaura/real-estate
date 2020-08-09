@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.exemple.realestate.exception.ResourceNotFoundException;
 import org.exemple.realestate.web.dto.GetEstateRequestDto;
 import org.exemple.realestate.web.dto.SaveEstateRequestDto;
-import org.exemple.realestate.persistance.entity.Estate;
+import org.exemple.realestate.domain.Estate;
 import org.exemple.realestate.persistance.EstateRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;

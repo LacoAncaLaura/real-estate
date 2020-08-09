@@ -1,15 +1,13 @@
-package org.exemple.realestate.persistance.entity;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+package org.exemple.realestate.domain;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-;
+import java.util.HashSet;
+import java.util.Set;
 
 
 @Builder
@@ -44,4 +42,7 @@ public class Estate {
     private int quantity;
     @NotNull
     private double tax;
+
+    @ManyToMany(mappedBy = "estates")
+    private Set<Favorite>favorites = new HashSet<>();
 }

@@ -4,7 +4,7 @@ import lombok.Builder;
 import lombok.Data;
 import org.exemple.realestate.web.dto.GetEstateRequestDto;
 import org.exemple.realestate.web.dto.SaveEstateRequestDto;
-import org.exemple.realestate.persistance.entity.Estate;
+import org.exemple.realestate.domain.Estate;
 import org.exemple.realestate.service.EstateService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

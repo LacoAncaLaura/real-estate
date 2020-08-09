@@ -1,6 +1,6 @@
 package org.exemple.realestate;
 
-import org.exemple.realestate.persistance.entity.Estate;
+import org.exemple.realestate.domain.Estate;
 import org.exemple.realestate.persistance.EstateRepository;
 import org.exemple.realestate.service.EstateService;
 import org.junit.Before;

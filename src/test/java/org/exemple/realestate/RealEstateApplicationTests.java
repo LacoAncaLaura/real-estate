@@ -7,7 +7,7 @@ import static org.hamcrest.Matchers.greaterThan;
 import org.exemple.realestate.exception.ResourceNotFoundException;
 import org.exemple.realestate.service.EstateService;
 import org.exemple.realestate.web.dto.SaveEstateRequestDto;
-import org.exemple.realestate.persistance.entity.Estate;
+import org.exemple.realestate.domain.Estate;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
