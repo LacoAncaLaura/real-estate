@@ -48,7 +48,7 @@ public class EstateController {
 
         return new ResponseEntity<>(estate, HttpStatus.OK);
     }
-    @GetMapping("/{id}")
+    @GetMapping
     public ResponseEntity<Page<EstateResponse>>getProducts(@Valid GetEstateRequestDto request, Pageable pageable){
 
         Page<EstateResponse> products = estateService.getEstates(request,pageable);
